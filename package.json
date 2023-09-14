@@ -2,9 +2,10 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
+    "build": "prisma generate && remix build",
     "dev": "remix dev",
     "typecheck": "tsc"
+    
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
