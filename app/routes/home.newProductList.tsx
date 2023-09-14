@@ -1,5 +1,5 @@
 import { redirect, type ActionFunction, type LoaderFunction } from "@remix-run/node";
-import { useLoaderData, useNavigate } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import { Modal } from "~/components/modal";
 import { SelectBox } from "~/components/select-box";
@@ -60,7 +60,6 @@ async function uploadImage(image: any) {
 
 export default function ProductList() {
   const data = useLoaderData();
-  const navigate = useNavigate();
   const { productListOptions, productCategoryIds } = data;
 
   const [image, setImage] = useState(null);

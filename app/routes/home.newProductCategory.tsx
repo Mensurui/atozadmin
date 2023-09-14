@@ -11,8 +11,8 @@ export const action: ActionFunction = async ({ request }) => {
   const name = form.get("name");
   const imageUrl = form.get("image_url"); // Get the image URL from the form
 
-  console.log("This is the name"+name)
-  console.log("This is the image url"+imageUrl)
+  console.log("This is the name" + name);
+  console.log("This is the image url" + imageUrl);
 
   if (typeof name === "string" && imageUrl) {
     try {
@@ -97,7 +97,7 @@ export default function ProductCategory() {
           error=""
           value={formData.name}
         />
-        {JSON.stringify(formData.name + ": " + imageUrl)}
+        
         <input
           name="image_url"
           type="url"
@@ -105,14 +105,14 @@ export default function ProductCategory() {
           readOnly
           style={{ display: "none" }} // Hide the input field
         />
-          <button
+        <button
           type="submit"
-          className="left-2 top-3 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 "
+          className="left-2 top-3 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 "
           name="_action"
           onClick={() => navigate(`/done`)}
         >
           <span className=" relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-cyan-500 rounded-md group-hover:bg-opacity-0">
-          Submit
+            Submit
           </span>
         </button>
       </form>
@@ -121,16 +121,22 @@ export default function ProductCategory() {
   ) : null;
 
   return (
-    <Modal isOpen={true} className="w-2/3 p-10 flex justify-center">
-      {showNextButton && (
+    <Modal isOpen={true} className="w-full p-10 flex justify-center">
+      {showNextButton ? (
         <>
           <input
             type="file"
             onChange={handleImageChange}
+            className="mb-4"
           />
-          <button onClick={handleSubmit}>Next</button>
+          <button
+            onClick={handleSubmit}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Next
+          </button>
         </>
-      )}
+      ) : null}
       {renderForm}
     </Modal>
   );
